@@ -3,10 +3,6 @@ package edu.knoldus
 import scala.annotation.tailrec
 
 class Sorting {
-  def swapList(list:List[Int],index1:Int,index2:Int):List[Int] ={
-    val newList:List[Int] = list.dropRight(list.length - index1) ::: (list(index2) :: list.dropRight(list.length - index2).drop(index1 + 1)) ::: list(index1) :: list.drop(index2 + 1)
-    newList
-  }
 
   def insertionSort(array: Array[Int]): Array[Int] = {
     val list: List[Int] = array.toList
@@ -47,6 +43,10 @@ class Sorting {
 
   def bubbleSort(array: Array[Int]): Array[Int] = {
     val list = array.toList
+    def swapList(list:List[Int],index1:Int,index2:Int):List[Int] ={
+      val newList:List[Int] = list.dropRight(list.length - index1) ::: (list(index2) :: list.dropRight(list.length - index2).drop(index1 + 1)) ::: list(index1) :: list.drop(index2 + 1)
+      newList
+    }
     @tailrec
     def bubbleSortJunior(list: List[Int], pos: Int): List[Int] = {
       if (pos >= 0) bubbleSortJunior( bubbleSortHelper(list, 0),pos-1)
